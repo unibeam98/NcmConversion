@@ -6,7 +6,6 @@ import json
 import os
 import shutil
 import struct
-import time
 #  此程序用于将网易云音乐的.ncm格式的音乐转换为  最初格式
 from concurrent.futures import ThreadPoolExecutor
 
@@ -200,52 +199,3 @@ def getArtist(artist):
         if i != len(artist) - 1:
             artistName += ", "
     return artistName
-
-
-if __name__ == '__main__':
-    #oriPath = input("输入源文件文档路径之后按回车:")
-    #tarPath = input("输入目标文档路径后按回车:")
-    oriPath = r"E:\unibeam\Music\未转换"
-    tarPath = r"E:\unibeam\Music\python"
-    if tarPath[-1] != '/' or tarPath[-1] != '\\':
-        tarPath += '\\'
-
-    # if len(sys.argv) > 1:
-    #     for file_path in sys.argv[1:]:
-    #   循环遍历所有的歌曲  只能进行一层文件夹下是歌曲
-
-    #try:
-    #    list = os.listdir(oriPath)
-    #    num = len(list)
-    #    print("共有"+str(num)+"首歌")
-    #    print("正在转换...")
-    #    for i in range(0, len(list)):
-    #        print("正在转换第"+str(i+1)+"/"+str(num)+"首")
-    #        path = os.path.join(oriPath, list[i])
-    #        if os.path.isfile(path):
-    #            startTime = time.time()
-    #            dump(path, tarPath)
-    #            endTime = time.time()
-    #            duration = endTime - startTime
-    #            print("第"+str(i+1)+"/"+str(num)+"首歌转换完成，用时"+str(duration)+"秒")
-    #    input("转换完成!按任意键退出。。。")
-    #except:
-    #    pass
-    #    print("Usage: python ncmdump.py \"File Name\"")
-
-    list = os.listdir(oriPath)
-    num = len(list)
-    print("共有" + str(num) + "首歌")
-    print("正在转换...")
-    for i in range(0, len(list)):
-        print("正在转换第" + str(i + 1) + "/" + str(num) + "首")
-        path = os.path.join(oriPath, list[i])
-        if path == r'E:\unibeam\Music\未转换\desktop.ini':
-            continue
-        if os.path.isfile(path):
-            startTime = time.time()
-            dump(path, tarPath)
-            endTime = time.time()
-            duration = endTime - startTime
-            print("第" + str(i + 1) + "/" + str(num) + "首歌转换完成，用时" + str(duration) + "秒")
-    input("转换完成!按回车键退出。。。")
